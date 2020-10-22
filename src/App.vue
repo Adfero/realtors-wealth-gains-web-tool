@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <!-- <img src="./assets/logo.png"> -->
     <WebTool/>
   </div>
 </template>
@@ -17,20 +16,27 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+h1, h2, p, span {
+  color: #165A86;
 }
-.button {
+h2 {
+  text-transform: uppercase;
+  font-size: 22px;
+  color: #165A86;
+  font-weight: 600;
+}
+a.button {
   cursor: pointer;
   color: white;
   font-weight: bold;
-  background: blue;
+  background: #165A86;
   padding: 10px 15px;
   border-radius: 10px;
+}
+a.button:hover {
+  color: white;
+}
+input, select {
+  color: #165A86;
 }
 </style>

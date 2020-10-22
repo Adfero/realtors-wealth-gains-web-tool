@@ -15,8 +15,8 @@ export default {
 }
 </script>
 
-<style>
-h1, h2, p, span {
+<style lang="scss">
+h1, h2, h3, h4, p, span {
   color: #165A86;
 }
 h2 {
@@ -38,5 +38,18 @@ a.button:hover {
 }
 input, select {
   color: #165A86;
+}
+.result-container {
+  .select-year {
+    a.button {
+      &[data-value="0"] {
+        background: #C7C7C9;
+        cursor: default;
+      }
+      &.active {
+        background: #61BA45;
+      }
+    }
+  }
 }
 </style>

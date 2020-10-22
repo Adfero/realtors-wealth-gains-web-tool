@@ -4,8 +4,12 @@
 <script>
   export default {
     name: "BarChart",
+    props: ['dataset','selected'],
+    mounted() {
+      console.log('data set is looking grim we need to clean it',this.dataset)
+    }
   };
 </script>
 
-<style>
+<style lang="scss">
 </style>

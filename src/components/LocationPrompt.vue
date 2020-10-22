@@ -21,8 +21,6 @@ export default {
     return {
       selectedState: '',
       selectedMetro: ''
-      // states: this.states
-      // metroMap: this.metroMap
     }
   },
   mounted() {
@@ -33,17 +31,13 @@ export default {
 
     },
     getStateFullName(stateAbbr){
-      console.log('oooh we in getStateFullName',stateAbbr,this.states[stateAbbr])
       return this.states[stateAbbr]
     },
     onChangeState(event) {
-        console.log('onChange:',event.target.value)
         this.selectedState = event.target.value
     },
     onChangeMetro(event) {
-        console.log('onChangeMetro:',event.target.value)
         this.selectedMetro = event.target.value
-        console.log('lfg',this.selectedMetro);
         this.$emit('metroSelected', this.selectedMetro)
     }
   }

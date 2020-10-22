@@ -2,7 +2,7 @@
   <div class="container">
     <intro v-if="introLoad" @close="goToLocation()"></intro>
     <locationPrompt v-if="location && stateToMetroMap && stateAbbr" :metroMap="stateToMetroMap" :states="stateAbbr" v-on:metroSelected="updateMetro"></locationPrompt>
-    <result v-if="selectedMetro" :data="selectedMetro"></result>
+    <result v-if="selectedMetro && !location" :data="selectedMetro"></result>
   </div>
 </template>
 
@@ -90,7 +90,6 @@ export default {
     var _this = this
     if(this.introLoad){
       this.getData().then(function(returndata){
-        console.log('so now we hopefully send data to the component',_this.data,_this.stateToMetroMap)
         return returndata
       });
     }
@@ -138,30 +137,22 @@ export default {
           })
 
           bar.then(() => {
-              return _this.data
+            // after done, sort the states by alpha
+            _this.stateAbbr = _this.stateAbbr.sort((a, b) => (a.name > b.name) ? 1 : -1)
+            return _this.data
           })
         }
       });
     },
     updateMetro(value){
-      console.log('wooo we got the value',value,this.data[value])
       this.selectedMetro = this.data[value]
+      this.location = false
     }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
+<style lang="scss">
+
 </style>

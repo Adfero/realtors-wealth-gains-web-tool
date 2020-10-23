@@ -9,7 +9,7 @@
       <option selected>Available Cities</option>
       <option v-for="metro in metroMap[selectedState]" :value="metro.geocode">{{ metro.metroName }}</option>
     </select>
-    <a class="location-next button" @click="getListings()">Next</a>
+    <a class="location-next btn-blue btn" @click="getListings()">Next</a>
   </div>
 </template>
 
@@ -27,9 +27,6 @@ export default {
 
   },
   methods: {
-    getListings() {
-
-    },
     getStateFullName(stateAbbr){
       return this.states[stateAbbr]
     },

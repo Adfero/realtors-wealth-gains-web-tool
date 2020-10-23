@@ -16,40 +16,52 @@ export default {
 </script>
 
 <style lang="scss">
-h1, h2, h3, h4, p, span {
-  color: #165A86;
-}
-h2 {
-  text-transform: uppercase;
-  font-size: 22px;
-  color: #165A86;
-  font-weight: 600;
-}
-a.button {
-  cursor: pointer;
-  color: white;
-  font-weight: bold;
-  background: #165A86;
-  padding: 10px 15px;
-  border-radius: 10px;
-}
-a.button:hover {
-  color: white;
-}
-input, select {
-  color: #165A86;
-}
-.result-container {
-  .select-year {
-    a.button {
-      &[data-value="0"] {
-        background: #C7C7C9;
-        cursor: default;
-      }
-      &.active {
-        background: #61BA45;
+@import './variables.scss';
+@import './utils.scss';
+#app, #wealth-gains-container-additional {
+  p {
+    font-size: 2rem;
+  }
+  h1, h2, h3, h4, p, span {
+    color: $color_navy;
+  }
+  h2, h3 {
+    text-transform: uppercase;
+  }
+  a.btn {
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    font-size: 20px;
+    font-family: BrandonGrotesqueWeb-Bold, 'Work Sans', sans-serif;
+    text-transform: uppercase;
+  }
+  input, select {
+    color: $color_navy;
+  }
+  .result-container {
+    .select-year {
+      a.button, a.btn {
+        &[data-value="0"] {
+          background: $color_gray;
+          cursor: default;
+        }
+        &.active {
+          background: $color_green;
+        }
       }
     }
   }
 }
+#wealth-gains-container-additional {
+  p {
+    font-size: 2.1rem;
+    color: $color_dark_gray;
+  }
+  a.btn {
+    font-size: 24px;
+  }
+}
+
 </style>

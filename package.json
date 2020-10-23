@@ -10,6 +10,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "animated-number-vue": "^1.0.0",
     "d3-scale": "^3.2.3",
     "vue": "^2.5.2"
   },

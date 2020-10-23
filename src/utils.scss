@@ -1,0 +1,93 @@
+.display-flex {
+  display: flex;
+}
+.display-none {
+  display: none;
+}
+.text-align-center {
+  text-align: center;
+}
+.w-100 {
+  width: 100%;
+}
+.padding-1 {
+  padding: 5px 15px;
+}
+.padding-y-10 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.padding-y-20 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.padding-y-30 {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+$colors: (
+  'black': $color_black,
+  'white': $color_white,
+  'blue': $color_navy,
+  'navy': $color_navy,
+  'green': $color_green,
+  'gray': $color_gray,
+  'dark-gray': $color_dark_gray
+);
+
+@each $color, $value in $colors {
+  .btn-outline-#{$color} {
+    border: 2px solid $value;
+    color: $value;
+    &:hover {
+      @if $color == 'white' {
+        background: $color_navy;
+        color: $value;
+      } @else {
+        background: $value;
+        color: $color_white;
+      }
+    }
+  }
+  .btn-#{$color} {
+    @if $color == 'white' {
+      border: 2px solid $color_navy;
+      background-color: $color_navy;
+      color: $value;
+    } @else {
+      border: 2px solid $value;
+      background-color: $value;
+      color: $color_white;
+    }
+    &:hover {
+      text-decoration: underline;
+      @if $color == 'white' {
+        color: $value;
+      } @else {
+        color: $color_white;
+      }
+    }
+  }
+  .border-#{$color} {
+    border-color: $value !important;
+  }
+  .border-bottom-#{$color} {
+    border-left: none;
+    border-right: none;
+    border-bottom-color: $value !important;
+  }
+  .#{$color}-bg {
+    background-color: $value;
+  }
+  .#{$color}-txt {
+    color: $value;
+    &:hover {
+      color: $value;
+    }
+  }
+  .#{$color}-link {
+    a {
+      color: $value;
+    }
+  }
+}

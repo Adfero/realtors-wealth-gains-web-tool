@@ -9,7 +9,6 @@
         :duration="300"
         />
     </div>
-    <a class="btn-blue btn" href="/realtors-wealth-gains-web-tool/">Start Over</a>
   </div>
 </template>
 <script>
@@ -21,34 +20,35 @@ var h3 = {
   '15': 'Wow!',
   '30': 'Whoa!',
 };
-var bodyCopy = {
-  '5': 'Nice!',
-  '10': 'Yes!',
-  '15': 'Wow!',
-  '30': 'Whoa!',
-};
+
 export default {
   name: "Summary",
   props: ['selected','data','finalNumber'],
   data() {
     return {
-      header: h3,
-      body: bodyCopy
+      header: h3
     }
   },
   components: {
     AnimatedNumber
   },
   mounted() {
-    console.log('what is our selected and data',this.selected,this.data)
+    // console.log('what is our selected and data',this.selected,this.data)
   },
   methods: {
     formatToPrice(value) {
-      return `$${value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",").toFixed(0)}`;
+      var price = `$${value.toFixed(0)}`
+      return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
   }
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+.final-number {
+  font-weight: 800;
+  font-size: 50px;
+  font-family: BrandonGrotesqueWeb-Bold, 'Work Sans', sans-serif;
+  text-transform: uppercase;
+}
 </style>

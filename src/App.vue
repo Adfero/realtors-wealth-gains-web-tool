@@ -18,6 +18,11 @@ export default {
 <style lang="scss">
 @import './variables.scss';
 @import './utils.scss';
+#hom-main {
+  background: $color_white;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
 #app, #wealth-gains-container-additional {
   p {
     font-size: 2rem;
@@ -39,19 +44,6 @@ export default {
   }
   input, select {
     color: $color_navy;
-  }
-  .result-container {
-    .select-year {
-      a.button, a.btn {
-        &[data-value="0"] {
-          background: $color_gray;
-          cursor: default;
-        }
-        &.active {
-          background: $color_green;
-        }
-      }
-    }
   }
 }
 #wealth-gains-container-additional {

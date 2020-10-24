@@ -93,9 +93,6 @@ export default {
       width: 700
     };
   },
-  mounted() {
-    console.log('data set is looking grim we need to clean it',this.dataset)
-  },
   computed: {
     yTicks() {
       return this.y.ticks(this.tickCount);

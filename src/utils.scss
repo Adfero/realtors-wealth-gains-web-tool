@@ -1,30 +1,88 @@
 .display-flex {
-  display: flex;
+  display: flex !important;
 }
 .display-none {
-  display: none;
+  display: none !important;
 }
 .text-align-center {
-  text-align: center;
+  text-align: center !important;
 }
 .w-100 {
-  width: 100%;
+  width: 100% !important;
 }
 .padding-1 {
-  padding: 5px 15px;
+  padding: 5px 15px !important;
 }
 .padding-y-10 {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
 }
 .padding-y-20 {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
 }
 .padding-y-30 {
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 30px !important;
+  padding-bottom: 30px !important;
 }
+.m-0 {
+  margin: 0 !important;
+}
+.m-1 {
+  margin: 1rem !important;
+}
+.m-2 {
+  margin: 2rem !important;
+}
+.m-3 {
+  margin: 3rem !important;
+}
+.mh-1 {
+  margin-top: 1rem !important;
+  margin-bottom: 1rem !important;
+}
+.mh-2 {
+  margin-top: 2rem !important;
+  margin-bottom: 2rem !important;
+}
+.mh-3 {
+  margin-top: 2rem !important;
+  margin-bottom: 2rem !important;
+}
+.mb-1 {
+  margin-bottom: 1rem !important;
+}
+.mb-2 {
+  margin-bottom: 2rem !important;
+}
+.mb-4 {
+  margin-bottom: 4rem !important;
+}
+.mb-5 {
+  margin-bottom: 5rem !important;
+}
+.mb-6 {
+  margin-bottom: 6rem !important;
+}
+.mt-0 {
+  margin-top: 0 !important;
+}
+.mt-1 {
+  margin-top: 1rem !important;
+}
+.mt-2 {
+  margin-top: 2rem !important;
+}
+.mt-4 {
+  margin-top: 4rem !important;
+}
+.mt-5 {
+  margin-top: 5rem !important;
+}
+.mt-6 {
+  margin-top: 6rem !important;
+}
+
 $colors: (
   'black': $color_black,
   'white': $color_white,
@@ -51,20 +109,20 @@ $colors: (
   }
   .btn-#{$color} {
     @if $color == 'white' {
-      border: 2px solid $color_navy;
-      background-color: $color_navy;
-      color: $value;
+      border: 2px solid $color_navy !important;
+      background-color: $color_navy !important;
+      color: $value !important;
     } @else {
-      border: 2px solid $value;
-      background-color: $value;
-      color: $color_white;
+      border: 2px solid $value !important;
+      background-color: $value !important;
+      color: $color_white !important;
     }
     &:hover {
       text-decoration: underline;
       @if $color == 'white' {
-        color: $value;
+        color: $value !important;
       } @else {
-        color: $color_white;
+        color: $color_white !important;
       }
     }
   }
@@ -77,17 +135,17 @@ $colors: (
     border-bottom-color: $value !important;
   }
   .#{$color}-bg {
-    background-color: $value;
+    background-color: $value !important;
   }
   .#{$color}-txt {
-    color: $value;
+    color: $value !important;
     &:hover {
-      color: $value;
+      color: $value !important;
     }
   }
   .#{$color}-link {
     a {
-      color: $value;
+      color: $value !important;
     }
   }
 }

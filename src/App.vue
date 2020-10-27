@@ -39,7 +39,7 @@ export default {
     font-weight: bold;
     border-radius: 10px;
     font-size: 20px;
-    font-family: BrandonGrotesqueWeb-Bold, 'Work Sans', sans-serif;
+    font-family: $font_brandon_bold;
     text-transform: uppercase;
   }
   input, select {
@@ -51,9 +51,32 @@ export default {
     font-size: 2.1rem;
     color: $color_dark_gray;
   }
-  a.btn {
-    font-size: 24px;
+  .additional-buttons > div {
+    padding: 5px 0;
+    @media all and (min-width: $screen-md) {
+      padding: 0 5px;
+    }
+    @media all and (min-width: $screen-lg) {
+      padding: 0 15px;
+    }
+    &:first-child {
+      @media all and (min-width: $screen-md) {
+        padding-left: 0;
+      }
+    }
+    &:last-child {
+      @media all and (min-width: $screen-md) {
+        padding-right: 0;
+      }
+    }
+    a.btn {
+      font-size: 2rem;
+      @media all and (min-width: $screen-lg) {
+        font-size: 24px;
+      }
+    }
   }
+
 }
 
 </style>

@@ -110,6 +110,8 @@ export default {
           // see if the current state exists in our returndata; if so, add it to the stateToMetroMap
           var count = Object.keys(data).length
           var i = 0
+          // _this.stateAbbr.push({ value: 0, name: "- State -"})
+          // _this.stateToMetroMap.push({ value: 0, name: "- Metro -"})
           var bar = new Promise((resolve, reject) => {
             for (var key in data){
               var metroGeocode = key;
@@ -123,11 +125,11 @@ export default {
                     if(_this.states[metroState] !== undefined){
                       _this.stateToMetroMap[metroState] = []
                       var stateFullName = _this.states[metroState]
-                      var stateObj = { abbreviation: metroState, name: stateFullName }
+                      var stateObj = { value: metroState, name: stateFullName }
                       _this.stateAbbr.push(stateObj)
                     }
                   }
-                  var metroObj = { geocode: metroGeocode, metroName: metroString }
+                  var metroObj = { value: metroGeocode, name: metroString }
                   _this.stateToMetroMap[metroState].push(metroObj)
                 }
               })

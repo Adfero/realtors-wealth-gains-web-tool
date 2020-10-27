@@ -11,7 +11,7 @@
       <div class="summary">
         <Summary :data="data" :selected="selectedYear" :finalNumber="finalNumber"></Summary>
       </div>
-      <div class="chart mh-2">
+      <div class="chart-wrapper mh-2">
         <BarChart
            class="chart"
            :dataSet="dataFormatted"
@@ -65,7 +65,7 @@ export default {
         var propertyName = yearText[this.selectedYear]
         propertyName = propertyName + '_year'
         this.finalNumber = this.data[propertyName]
-        this.dataFormatted.push(["5 yrs.",this.data.five_year],["10 yrs.",this.data.ten_year],["15 yrs.",this.data.fifteen_year],["30 yrs.",this.data.thirty_year])
+        this.dataFormatted.push(["5",this.data.five_year],["10",this.data.ten_year],["15",this.data.fifteen_year],["30",this.data.thirty_year])
       }
 
     }
@@ -79,22 +79,24 @@ export default {
   margin: 120px auto;
   display: block;
 }
-.result-container {
+#app .result-container {
   .select-year {
     max-width: 30%;
     margin: 0 auto;
     align-items: center;
     justify-content: space-around;
     .button, .btn {
-      width: 65px;
-      height: 65px;
+      width: 70px;
+      height: 70px;
       font-size: 40px;
+      text-align: center;
+      line-height: 1.6;
       &[data-value="0"] {
-        background: $color_gray;
+        background: $color_gray !important;
         cursor: default;
       }
       &.active {
-        background: $color_green;
+        background: $color_green !important;
       }
     }
   }

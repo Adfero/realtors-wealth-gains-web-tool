@@ -45,10 +45,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../variables.scss';
 .final-number {
   font-weight: 800;
   font-size: 50px;
-  font-family: BrandonGrotesqueWeb-Bold, 'Work Sans', sans-serif;
+  font-family: $font_brandon_bold;
   text-transform: uppercase;
 }
 </style>

@@ -109,11 +109,9 @@ $colors: (
   }
   .btn-#{$color} {
     @if $color == 'white' {
-      border: 2px solid $color_navy !important;
       background-color: $color_navy !important;
       color: $value !important;
     } @else {
-      border: 2px solid $value !important;
       background-color: $value !important;
       color: $color_white !important;
     }

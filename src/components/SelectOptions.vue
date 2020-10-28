@@ -70,6 +70,9 @@ export default {
   font-size: 3rem;
   text-align: center;
   font-family: $font_brandon;
+  &.metro-selection {
+    font-size: 2.5rem;
+  }
 }
 
 .custom-select .selected {
@@ -81,16 +84,7 @@ export default {
   // padding-left: 1em;
   cursor: pointer;
   user-select: none;
-  // &:after {
-  //   content: '\25BE';
-  //   position: absolute;
-  //   right: 10px;
-  //   z-index: 1;
-  //   text-align: center;
-  //   width: 10%;
-  //   height: 100%;
-  //   pointer-events: none;
-  // }
+  padding: 0 15px;
 }
 
 .custom-select .selected.open {
@@ -103,6 +97,7 @@ export default {
   position: absolute;
   right: 0;
   width: 20px;
+  bottom: 27px;
   height: 20px;
   font-size: 20px;
   border: 5px solid transparent;
@@ -123,6 +118,8 @@ export default {
   right: 0;
   z-index: 1;
   font-size: 2.5rem;
+  max-height: 350px;
+  overflow-y: scroll;
 }
 
 .custom-select .items div {

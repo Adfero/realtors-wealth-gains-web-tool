@@ -27,9 +27,11 @@ export default {
   p {
     font-size: 2rem;
   }
-  h1, h2, h3, h4, p, span {
-    color: $color_navy;
-  }
+  // :not(.swp_social_panel) {
+    h1, h2, h3, h4, p, span:not(.swp_share) {
+     color: $color_navy;
+   }
+  // }
   h2, h3 {
     text-transform: uppercase;
   }
@@ -42,9 +44,11 @@ export default {
     font-family: $font_brandon_bold;
     text-transform: uppercase;
   }
-  input, select {
-    color: $color_navy;
-  }
+  // :not(.swp_social_panel) {
+    input, select {
+      color: $color_navy;
+    }
+  // }
 }
 #wealth-gains-container-additional {
   p {

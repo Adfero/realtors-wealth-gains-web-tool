@@ -1,18 +1,16 @@
 <template>
-  <div class="summary-extended text-align-center">
+  <div class="summary-extended text-align-center row">
     <div class="col-sm-6 text-align-left">
-      <h3 class="uppercase">{{ header[selected] }}!</h3>
-      <img class="w-100" src="/wp-content/plugins/realtors-wealth-gains-data-viz/js/realtors-wealth-gains/static/assets/realtor-character.svg" />
+      <h3 class="uppercase">{{ header[selected] }}</h3>
+      <!-- <img class="result-image w-100 mb-2 padding-1" :src="'/wp-content/plugins/realtors-wealth-gains-data-viz/js/realtors-wealth-gains/static/assets/'+img[selected]" /> -->
+      <img class="w-100" :src="'/wp-content/plugins/realtors-wealth-gains-data-viz/assets/'+img[selected]" />
     </div>
-    <div class="col-sm-6 text-align-left">
+    <div class="col-sm-6 text-align-left mt-6 body-copy">
       <p>{{ body[selected] }}</p>
-    </div>
-    <div class="share-restart">
-      <a class="btn-blue btn" href="/realtors-wealth-gains-web-tool/">Share</a>
-      <a class="btn-blue btn" href="/realtors-wealth-gains-web-tool/">Start Over</a>
     </div>
   </div>
 </template>
+
 <script>
 var h3 = {
   '5': 'The Short Stay',
@@ -29,7 +27,10 @@ var bodyCopy = {
 };
 
 var summaryImg = {
-
+  '5': 'short-stay.svg',
+  '10': 'average-stay.svg',
+  '15': 'grade-school-stay.svg',
+  '30': 'forever-home.svg',
 };
 
 export default {
@@ -38,11 +39,19 @@ export default {
   data() {
     return {
       header: h3,
-      body: bodyCopy
+      body: bodyCopy,
+      img: summaryImg
     }
   }
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+@import '../variables.scss';
+@import '../utils.scss';
+@media all and (max-width: $screen-md) {
+  .body-copy {
+    margin-top: 0 !important;
+  }
+}
 </style>

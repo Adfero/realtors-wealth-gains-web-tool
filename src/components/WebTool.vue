@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
+  <div class="container m-1">
     <intro v-if="introLoad" @close="goToLocation()"></intro>
-    <locationPrompt v-if="location && stateToMetroMap && stateAbbr" :metroMap="stateToMetroMap" :states="stateAbbr" v-on:metroSelected="updateMetro"></locationPrompt>
+    <locationPrompt v-if="location && stateToMetroMap && stateAbbr && sorted" :metroMap="stateToMetroMap" :states="stateAbbr" v-on:metroSelected="updateMetro"></locationPrompt>
     <result v-if="selectedMetro && !location" :data="selectedMetro"></result>
   </div>
 </template>
@@ -79,7 +79,8 @@ export default {
       states: states,
       stateToMetroMap: [],
       stateAbbr: [],
-      selectedMetro: ''
+      selectedMetro: '',
+      sorted: false
     }
   },
   components: {
@@ -103,7 +104,7 @@ export default {
     getData() {
       var _this = this
       var $ = jQuery
-      return $.getJSON("http://homeownershipmatters.local/wealth-gains-metro-data-json").then(function(data){
+      return $.getJSON("/wealth-gains-metro-data-json").then(function(data){
         _this.data = data
         if(data !== undefined ) {
           // create new stateToMetroMap array with a state => geocode map
@@ -122,8 +123,8 @@ export default {
                 // verifying validity; excluding US from this
                 if(metroState != "US") {
                   if(_this.stateToMetroMap[metroState] === null || !Array.isArray(_this.stateToMetroMap[metroState])) {
+                    _this.stateToMetroMap[metroState] = []
                     if(_this.states[metroState] !== undefined){
-                      _this.stateToMetroMap[metroState] = []
                       var stateFullName = _this.states[metroState]
                       var stateObj = { value: metroState, name: stateFullName }
                       _this.stateAbbr.push(stateObj)
@@ -141,6 +142,8 @@ export default {
           bar.then(() => {
             // after done, sort the states by alpha
             _this.stateAbbr = _this.stateAbbr.sort((a, b) => (a.name > b.name) ? 1 : -1)
+            _this.sorted = true
+            // console.log('sorted',_this.stateAbbr,_this.sorted)
             return _this.data
           })
         }

@@ -4,7 +4,7 @@
     :width="width + marginLeft / 2"
     :height="height + marginTop"
   >
-    <g :transform="`translate(${marginLeft / 2}, ${marginTop / 2})`">
+    <g :transform="`translate(0,20)`">
       <g
         class="x-axis"
         fill="none"
@@ -14,7 +14,7 @@
         <path
           class="domain"
           :stroke="currentColor"
-          :d="`M0.5,6V0.5H${width}.5V6`"
+          :d="`M0.5,0V0.5H${width}.0V0`"
         ></path>
         <g
           class="tick"
@@ -42,7 +42,7 @@
           :class="bar.year == selectedYear ? 'active' : ''"
         ></rect>
         <text
-          :fill="currentColor"
+          :fill="bar.negative == 'true' ? negativeColor : currentColor"
           v-for="(bar, index) in bars"
           :key="index"
           :x="bar.x"
@@ -75,15 +75,35 @@ export default {
     return {
       height: 200,
       width: 520,
-      currentColor: '#175985'
+      currentColor: '#175985',
+      negativeColor: '#EB1C24'
     };
   },
+  mounted(){
+    this.$nextTick(function() {
+      window.addEventListener('resize', this.getWindowWidth);
+      this.getWindowWidth()
+    })
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.getWindowWidth);
+  },
   methods: {
+    getWindowWidth(event) {
+      if(document.documentElement.clientWidth < 450) {
+        this.width = 300
+      }
+      else if(document.documentElement.clientWidth >= 450 && document.documentElement.clientWidth < 640) {
+        this.width = 400
+      } else {
+        this.width = 520
+      }
+    },
     formatPrice(value) {
-      if(value > 1000000) {
+      if(value > 1000000 || value < -1000000) {
         var price = Math.round(value/1000000)
         price = `$${price}M`
-      } else if(value > 1000) {
+      } else if(value > 1000 || value < -1000 ) {
         var price = Math.round(value/1000)
         price = `$${price}K`
       } else {
@@ -110,15 +130,41 @@ export default {
     },
     bars() {
       let bars = this.dataSet.map((d) => {
-        return {
-          xLabel: d[0] + ' yrs.',
-          year: d[0],
-          x: this.x(d[0]),
-          y: this.y(d[1]),
-          width: this.x.bandwidth(),
-          height: this.height - this.y(d[1]),
-          formatted: d[1] == 0 ? '??' : this.formatPrice(d[1])
-        };
+        if(d[1] < 0) {
+          return {
+            xLabel: d[0] + ' yrs.',
+            year: d[0],
+            x: this.x(d[0]),
+            y: 185,
+            width: this.x.bandwidth(),
+            height: this.height - this.y(d[1]), // TODO: look in to using TWEEN to animate this
+            formatted: this.formatPrice(d[1]),
+            negative: 'true'
+          };
+        } else if (d[1] == 0) {
+          return {
+            xLabel: d[0] + ' yrs.',
+            year: d[0],
+            x: this.x(d[0]) + 25,
+            y: this.y(d[1]) - 10,
+            width: this.x.bandwidth(),
+            height: this.height - this.y(d[1]), // TODO: look in to using TWEEN to animate this
+            formatted: '?',
+            negative: 'false'
+          };
+        } else {
+          return {
+            xLabel: d[0] + ' yrs.',
+            year: d[0],
+            x: this.x(d[0]),
+            y: this.y(d[1]),
+            width: this.x.bandwidth(),
+            height: this.height - this.y(d[1]), // TODO: look in to using TWEEN to animate this
+            formatted: this.formatPrice(d[1]),
+            negative: 'false'
+          };
+        }
+
       });
 
       return bars;
@@ -128,9 +174,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../variables.scss';
 .barchart {
   .bar-label {
-    font-size: 2rem;
+    font-size: 1.4rem;
+    font-family: $font_brandon;
+    @media all and (min-width: $screen-sm) {
+      font-size: 2rem;
+    }
   }
 }
 </style>

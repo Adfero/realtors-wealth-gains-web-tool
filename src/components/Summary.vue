@@ -1,9 +1,10 @@
 <template>
-  <div class="summary">
-    <h3 class="uppercase">{{ header[selected] }}!</h3>
-    <p>After owning your home for {{ selected }} years in the {{ data.metro }} area, your house would have appreciated by about</p>
-    <div class="navy-text final-number animated">
+  <div class="summary col-sm-12 mb-4">
+    <h3 class="uppercase mt-5 mb-3">{{ header[selected] }}</h3>
+    <p class="w-80 margin-center">After owning your home for {{ selected }} years in the {{ data.metro }} area, your house would have appreciated by about</p>
+    <div class="final-number animated">
       <animated-number
+        :class="finalNumber < 0 ? 'red-txt' : 'navy-txt'"
         :value="finalNumber"
         :formatValue="formatToPrice"
         :duration="300"
@@ -51,5 +52,10 @@ export default {
   font-size: 50px;
   font-family: $font_brandon_bold;
   text-transform: uppercase;
+}
+.summary {
+  p {
+    font-size: 24px;
+  }
 }
 </style>

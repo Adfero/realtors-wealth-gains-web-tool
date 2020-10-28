@@ -7,8 +7,24 @@
 .text-align-center {
   text-align: center !important;
 }
+.text-align-left {
+  text-align: left !important;
+}
+.text-align-right {
+  text-align: right !important;
+}
 .w-100 {
   width: 100% !important;
+}
+.margin-center {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+.w-80 {
+  width: 80% !important;
+  @media all and (max-width: $screen-sm) {
+    width: 80% !important;
+  }
 }
 .padding-1 {
   padding: 5px 15px !important;
@@ -46,8 +62,12 @@
   margin-bottom: 2rem !important;
 }
 .mh-3 {
-  margin-top: 2rem !important;
-  margin-bottom: 2rem !important;
+  margin-top: 3rem !important;
+  margin-bottom: 3rem !important;
+}
+.mh-4 {
+  margin-top: 4rem !important;
+  margin-bottom: 4rem !important;
 }
 .mb-1 {
   margin-bottom: 1rem !important;
@@ -90,7 +110,8 @@ $colors: (
   'navy': $color_navy,
   'green': $color_green,
   'gray': $color_gray,
-  'dark-gray': $color_dark_gray
+  'dark-gray': $color_dark_gray,
+  'red': $color_red
 );
 
 @each $color, $value in $colors {
@@ -146,4 +167,9 @@ $colors: (
       color: $value !important;
     }
   }
+}
+
+@keyframes animatedBackground {
+	from { background-position: 0 0; }
+	to { background-position: 0 1000px; }
 }

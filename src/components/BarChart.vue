@@ -8,7 +8,7 @@
       <g
         class="x-axis"
         fill="none"
-        :transform="`translate(0, ${height})`"
+        :transform="`translate(0, ${height - 9})`"
         style="color: #888"
       >
         <path
@@ -31,21 +31,37 @@
         </g>
       </g>
       <g class="bars" fill="none">
-        <rect
-          v-for="(bar, index) in bars"
+        <defs v-for="(bar, index) in bars">
+          <clipPath
+            :id="'round-corner-'+index">
+              <rect rx="7" ry="7"
+              :fill="bar.year == selectedYear ? '#61BA45' : '#175985'"
+              :key="index"
+              :height="bar.height"
+              :width="bar.width"
+              :x="bar.x"
+              :y="bar.y"
+              :class="bar.year == selectedYear ? 'active' : ''"
+              />
+          </clipPath>
+        </defs>
+
+        <rect v-for="(bar, index) in bars"
           :fill="bar.year == selectedYear ? '#61BA45' : '#175985'"
           :key="index"
-          :height="bar.height"
+          :height="bar.height - 10"
           :width="bar.width"
           :x="bar.x"
           :y="bar.y"
           :class="bar.year == selectedYear ? 'active' : ''"
-        ></rect>
+          :clip-path="'url(#round-corner-'+index+')'"
+          :style="'opacity: 1;stroke:'+ (bar.year == selectedYear ? '#61BA45' : '#175985') +';'"></rect>
+
         <text
           :fill="bar.negative == 'true' ? negativeColor : currentColor"
           v-for="(bar, index) in bars"
           :key="index"
-          :x="bar.x"
+          :x="bar.xAdjusted"
           :y="(bar.y - 5)"
           :class="'bar-label'"
           >{{ bar.formatted }}</text>
@@ -76,14 +92,15 @@ export default {
       height: 200,
       width: 520,
       currentColor: '#175985',
-      negativeColor: '#EB1C24'
+      negativeColor: '#EB1C24',
+      mobile: false
     };
   },
   mounted(){
-    this.$nextTick(function() {
-      window.addEventListener('resize', this.getWindowWidth);
-      this.getWindowWidth()
-    })
+    // this.$nextTick(function() {
+    window.addEventListener('resize', this.getWindowWidth);
+    this.getWindowWidth()
+    // })
   },
   beforeDestroy() {
     window.removeEventListener('resize', this.getWindowWidth);
@@ -91,10 +108,12 @@ export default {
   methods: {
     getWindowWidth(event) {
       if(document.documentElement.clientWidth < 450) {
-        this.width = 300
+        this.width = 280
+        this.mobile = true
       }
       else if(document.documentElement.clientWidth >= 450 && document.documentElement.clientWidth < 640) {
         this.width = 400
+        this.mobile = true
       } else {
         this.width = 520
       }
@@ -135,6 +154,7 @@ export default {
             xLabel: d[0] + ' yrs.',
             year: d[0],
             x: this.x(d[0]),
+            xAdjusted: this.x(d[0]),
             y: 185,
             width: this.x.bandwidth(),
             height: this.height - this.y(d[1]), // TODO: look in to using TWEEN to animate this
@@ -145,8 +165,9 @@ export default {
           return {
             xLabel: d[0] + ' yrs.',
             year: d[0],
-            x: this.x(d[0]) + 25,
-            y: this.y(d[1]) - 10,
+            x: this.x(d[0]),
+            xAdjusted: this.x(d[0]) + (this.mobile ? 14 : 24),
+            y: 185,
             width: this.x.bandwidth(),
             height: this.height - this.y(d[1]), // TODO: look in to using TWEEN to animate this
             formatted: '?',
@@ -157,6 +178,7 @@ export default {
             xLabel: d[0] + ' yrs.',
             year: d[0],
             x: this.x(d[0]),
+            xAdjusted: this.x(d[0]),
             y: this.y(d[1]),
             width: this.x.bandwidth(),
             height: this.height - this.y(d[1]), // TODO: look in to using TWEEN to animate this

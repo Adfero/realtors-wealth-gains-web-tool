@@ -4,6 +4,12 @@
 .display-none {
   display: none !important;
 }
+.position-relative {
+  position: relative !important;
+}
+.position-absolute {
+  position: absolute !important;
+}
 .text-align-center {
   text-align: center !important;
 }
@@ -106,8 +112,10 @@
 $colors: (
   'black': $color_black,
   'white': $color_white,
-  'blue': $color_navy,
+  'blue': $color_blue,
+  'dark-blue': $color_dark_blue,
   'navy': $color_navy,
+  'dark-navy': $color_dark_navy,
   'green': $color_green,
   'gray': $color_gray,
   'dark-gray': $color_dark_gray,
@@ -115,33 +123,31 @@ $colors: (
 );
 
 @each $color, $value in $colors {
-  .btn-outline-#{$color} {
-    border: 2px solid $value;
-    color: $value;
-    &:hover {
-      @if $color == 'white' {
-        background: $color_navy;
-        color: $value;
-      } @else {
-        background: $value;
-        color: $color_white;
-      }
-    }
-  }
   .btn-#{$color} {
     @if $color == 'white' {
-      background-color: $color_navy !important;
+      background-color: $color_blue !important;
       color: $value !important;
     } @else {
       background-color: $value !important;
       color: $color_white !important;
     }
-    &:hover {
-      text-decoration: underline;
-      @if $color == 'white' {
-        color: $value !important;
-      } @else {
-        color: $color_white !important;
+    @media all and (min-width: $screen-sm) {
+      &:hover {
+        text-decoration: underline;
+        @if $color == 'white' {
+          color: $value !important;
+        } @else if $color == 'green' {
+          background: $color_dark_green !important;
+          color: $color_white;
+        } @else if $color == 'blue' {
+          background: $color_dark_blue !important;
+          color: $color_white;
+        } @else if $color == 'dark-blue' {
+          background: $color_dark_blue !important;
+          color: $color_white;
+        } @else {
+          color: $color_white !important;
+        }
       }
     }
   }

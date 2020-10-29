@@ -2,8 +2,7 @@
   <div class="summary-extended text-align-center row">
     <div class="col-sm-6 text-align-left">
       <h3 class="uppercase">{{ header[selected] }}</h3>
-      <!-- <img class="result-image w-100 mb-2 padding-1" :src="'/wp-content/plugins/realtors-wealth-gains-data-viz/js/realtors-wealth-gains/static/assets/'+img[selected]" /> -->
-      <img class="w-100" :src="'/wp-content/plugins/realtors-wealth-gains-data-viz/assets/'+img[selected]" />
+      <img class="w-100 padding-1 mb-2" :src="'/wp-content/plugins/realtors-wealth-gains-data-viz/assets/'+img[selected]" />
     </div>
     <div class="col-sm-6 text-align-left mt-6 body-copy">
       <p>{{ body[selected] }}</p>

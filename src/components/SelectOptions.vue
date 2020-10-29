@@ -61,7 +61,8 @@ export default {
 @import '../variables.scss';
 .custom-select {
   position: relative;
-  max-width: 400px;
+  width: 400px;
+  max-width: 80%;
   text-align: left;
   outline: none;
   // height: 47px;
@@ -79,8 +80,8 @@ export default {
   background-color: $color_white;
   border-radius: 0;
   border: none;
-  border-bottom: 1px solid $color_navy;
-  color: $color_navy;
+  border-bottom: 1px solid $color_dark_blue;
+  color: $color_dark_blue;
   // padding-left: 1em;
   cursor: pointer;
   user-select: none;
@@ -113,7 +114,7 @@ export default {
   border-left: 1px solid $color_white;
   border-bottom: 1px solid $color_white;
   position: absolute;
-  background-color: $color_navy;
+  background-color: $color_dark_blue;
   left: 0;
   right: 0;
   z-index: 1;
@@ -124,15 +125,17 @@ export default {
 
 .custom-select .items div {
   color: $color_white;
-  background-color: $color_navy;
+  background-color: $color_dark_blue;
   // padding-left: 1em;
   cursor: pointer;
   user-select: none;
-  padding: 5px 15px;
+  padding: 5px 15px 0px;
 }
 
-.custom-select .items div:hover {
-  background-color: $color_green;
+@media all and (min-width: $screen-sm) {
+  .custom-select .items div:hover {
+    background-color: $color_green;
+  }
 }
 
 .selectHide {

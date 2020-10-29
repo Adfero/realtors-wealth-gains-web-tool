@@ -18,6 +18,11 @@ export default {
 <style lang="scss">
 @import './variables.scss';
 @import './utils.scss';
+html, body {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 100%;
+}
 #hom-main {
   background: $color_white;
   margin: 0 auto;
@@ -28,8 +33,8 @@ export default {
     font-size: 2rem;
   }
   // :not(.swp_social_panel) {
-    h1, h2, h3, h4, p, span:not(.swp_share) {
-     color: $color_navy;
+    h1, h2, h3, h4, p, span {
+     color: $color_blue;
    }
   // }
   h2, h3 {
@@ -46,17 +51,41 @@ export default {
   }
   // :not(.swp_social_panel) {
     input, select {
-      color: $color_navy;
+      color: $color_blue;
     }
   // }
+  .illustration.realtor {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    top: auto;
+    right: auto;
+    @media all and (max-width: $screen-md) {
+      img {
+        max-width: 75%;
+      }
+    }
+    .speech-bubble {
+      position: absolute;
+      top: -25px;
+      right: -125px;
+      @media all and (max-width: $screen-md) {
+        display: none;
+      }
+    }
+  }
 }
 #wealth-gains-container-additional {
+  margin: 3rem;
+  @media all and (min-width: $screen-xl) {
+    margin: 3rem 0;
+  }
   p {
     font-size: 2.1rem;
     color: $color_dark_gray;
   }
   .additional-buttons > div {
-    padding: 5px 0;
+    padding: 10px 0;
     @media all and (min-width: $screen-md) {
       padding: 0 5px;
     }
@@ -75,8 +104,10 @@ export default {
     }
     a.btn {
       font-size: 2rem;
+      height: 84px;
       @media all and (min-width: $screen-lg) {
         font-size: 24px;
+        height: 90px;
       }
     }
   }

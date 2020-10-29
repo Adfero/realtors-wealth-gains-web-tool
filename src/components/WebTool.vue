@@ -1,8 +1,8 @@
 <template>
-  <div class="container m-1">
+  <div class="container m-0">
     <intro v-if="introLoad" @close="goToLocation()"></intro>
     <locationPrompt v-if="location && stateToMetroMap && stateAbbr && sorted" :metroMap="stateToMetroMap" :states="stateAbbr" v-on:metroSelected="updateMetro"></locationPrompt>
-    <result v-if="selectedMetro && !location" :data="selectedMetro"></result>
+    <result v-if="selectedMetro && !location" :data="selectedMetro" @restart="restartToLocation"></result>
   </div>
 </template>
 
@@ -143,7 +143,6 @@ export default {
             // after done, sort the states by alpha
             _this.stateAbbr = _this.stateAbbr.sort((a, b) => (a.name > b.name) ? 1 : -1)
             _this.sorted = true
-            // console.log('sorted',_this.stateAbbr,_this.sorted)
             return _this.data
           })
         }
@@ -152,6 +151,19 @@ export default {
     updateMetro(value){
       this.selectedMetro = this.data[value]
       this.location = false
+    },
+    restartToLocation() {
+      this.introLoad = false
+      this.location = true
+      this.smoothScrollTo('#app')
+    },
+    smoothScrollTo(hash){
+      var $ = jQuery
+      if (hash !== "") {
+       $('html, body').animate({
+         scrollTop: $(hash).offset().top - 40
+       }, 400);
+      }
     }
   }
 }

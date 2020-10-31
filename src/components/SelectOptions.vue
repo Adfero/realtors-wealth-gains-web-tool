@@ -80,8 +80,8 @@ export default {
   background-color: $color_white;
   border-radius: 0;
   border: none;
-  border-bottom: 1px solid $color_dark_blue;
-  color: $color_dark_blue;
+  border-bottom: 1px solid $color_blue;
+  color: $color_blue;
   // padding-left: 1em;
   cursor: pointer;
   user-select: none;
@@ -114,7 +114,7 @@ export default {
   border-left: 1px solid $color_white;
   border-bottom: 1px solid $color_white;
   position: absolute;
-  background-color: $color_dark_blue;
+  background-color: $color_blue;
   left: 0;
   right: 0;
   z-index: 1;
@@ -125,7 +125,7 @@ export default {
 
 .custom-select .items div {
   color: $color_white;
-  background-color: $color_dark_blue;
+  background-color: $color_blue;
   // padding-left: 1em;
   cursor: pointer;
   user-select: none;

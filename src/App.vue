@@ -57,10 +57,11 @@ html, body {
   .illustration.realtor {
     position: absolute;
     bottom: 0;
-    left: 0;
+    left: 3rem;
     top: auto;
     right: auto;
     @media all and (max-width: $screen-md) {
+      left: 0;
       img {
         max-width: 75%;
       }

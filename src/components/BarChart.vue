@@ -166,11 +166,11 @@ export default {
             xLabel: d[0] + ' yrs.',
             year: d[0],
             x: this.x(d[0]),
-            xAdjusted: this.x(d[0]) + (this.mobile ? 14 : 24),
+            xAdjusted: this.x(d[0]) + (this.mobile ? 1 : 11),
             y: 185,
             width: this.x.bandwidth(),
             height: this.height - this.y(d[1]), // TODO: look in to using TWEEN to animate this
-            formatted: '?',
+            formatted: 'N/A',
             negative: 'false'
           };
         } else {

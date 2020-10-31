@@ -1,7 +1,8 @@
 <template>
   <div class="summary col-sm-12 mb-4">
-    <h3 class="uppercase mh-3">{{ header[selected] }}</h3>
-    <p class="w-80 margin-center">After owning your home for {{ selected }} years in the {{ data.metro }} area, your house would have appreciated by about</p>
+    <h3 class="uppercase mh-3">{{ finalNumber > 0 ? header[selected] : '' }}</h3>
+    <p class="w-80 margin-center" v-if="finalNumber > 0">After owning your home for {{ selected }} years in the {{ data.metro }} area, your house would have appreciated by about</p>
+    <p class="w-80 margin-center" v-else>After owning your home for {{ selected }} years in the {{ data.metro }} area, your house would depreciate by about</p>
     <div class="final-number animated">
       <animated-number
         :class="finalNumber < 0 ? 'red-txt' : 'blue-txt'"
@@ -10,6 +11,7 @@
         :duration="300"
         />
     </div>
+    <p v-if="finalNumber < 0">...but be patient. It is normal for housing prices to fluctuate based on the market, but wealth gains always trend upwards over time. Keep an eye on housing prices in your area and consider holding on until prices rise again.</p>
   </div>
 </template>
 <script>

@@ -1,8 +1,8 @@
 <template>
   <div class="summary col-sm-12 mb-4">
     <h3 class="uppercase mh-3">{{ finalNumber > 0 ? header[selected] : '' }}</h3>
-    <p class="w-80 margin-center" v-if="finalNumber > 0">After owning your home for {{ selected }} years in the {{ data.metro }} area, your house would have appreciated by about</p>
-    <p class="w-80 margin-center" v-else>After owning your home for {{ selected }} years in the {{ data.metro }} area, your house would depreciate by about</p>
+    <p class="w-80 margin-center" v-if="finalNumber > 0">If you bought a home {{ selected }} years ago in the {{ data.metro }} area, your expected housing wealth (equity) gains are</p>
+    <p class="w-80 margin-center" v-else>If you bought a home {{ selected }} years ago in the {{ data.metro }} area, your expected housing wealth (equity) gains are</p>
     <div class="final-number animated">
       <animated-number
         :class="finalNumber < 0 ? 'red-txt' : 'blue-txt'"

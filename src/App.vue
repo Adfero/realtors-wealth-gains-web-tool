@@ -32,6 +32,11 @@ html, body {
   p {
     font-size: 2rem;
   }
+  .disclaimer p {
+    font-size: 1.5rem;
+    font-style: italic;
+    text-align: left;
+  }
   // :not(.swp_social_panel) {
     h1, h2, h3, h4, p, span {
      color: $color_blue;

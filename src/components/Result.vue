@@ -1,5 +1,5 @@
 <template>
-  <div class="result-container position-relative text-align-center mb-3">
+  <div class="result-container position-relative text-align-center">
     <div class="inner-container w-80 margin-center">
       <h2>For How Many Years?</h2>
       <div class="display-flex select-year">

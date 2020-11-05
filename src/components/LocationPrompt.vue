@@ -3,7 +3,7 @@
     <div class="prompt-container">
       <h2>Where Do You Want To Live?</h2>
       <selectOptions :class="'state-selection'" :options="states" :placeholder='"State"' v-on:input="onChangeState($event)"></selectOptions>
-      <selectOptions v-if="selectedState && metroMap[selectedState]" :class="'metro-selection'" :options="metroMap[selectedState]" :placeholder='"Available Listings"' v-on:input="onChangeMetro($event)"></selectOptions>
+      <selectOptions v-if="selectedState && metroMap[selectedState]" :class="'metro-selection'" :options="metroMap[selectedState]" :placeholder='"Metro Areas"' v-on:input="onChangeMetro($event)"></selectOptions>
       <div class="w-100 mh-2" v-if="selectedState && selectedMetro"><a class="location-next btn-blue btn mt-2" @click="getListings()">Next</a></div>
     </div>
     <div class="illustration realtor">
@@ -12,7 +12,6 @@
         <img class="w-100" src="/wp-content/plugins/realtors-wealth-gains-data-viz/assets/speech-bubble.svg" />
       </div>
     </div>
-
   </div>
 </template>
 

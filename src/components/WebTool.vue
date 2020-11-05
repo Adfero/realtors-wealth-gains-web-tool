@@ -3,6 +3,7 @@
     <intro v-if="introLoad" @close="goToLocation()"></intro>
     <locationPrompt v-if="location && stateToMetroMap && stateAbbr && sorted" :metroMap="stateToMetroMap" :states="stateAbbr" v-on:metroSelected="updateMetro"></locationPrompt>
     <result v-if="selectedMetro && !location" :data="selectedMetro" @restart="restartToLocation"></result>
+    <div class="disclaimer mh-2"><p>The calculations are based on the price of a typical home in the market. The price appreciation depends on a home's condition, and expenditures for a home's upkeep are not factored into these calculations. Home prices have generally increased over time, but home prices can rise or fall dependng national or local economic conditions.</p></div>
   </div>
 </template>
 

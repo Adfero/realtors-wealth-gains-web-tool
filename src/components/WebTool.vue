@@ -3,7 +3,7 @@
     <intro v-if="introLoad" @close="goToLocation()"></intro>
     <locationPrompt v-if="location && stateToMetroMap && stateAbbr && sorted" :metroMap="stateToMetroMap" :states="stateAbbr" v-on:metroSelected="updateMetro"></locationPrompt>
     <result v-if="selectedMetro && !location" :data="selectedMetro" @restart="restartToLocation"></result>
-    <div class="disclaimer mh-2"><p>The calculations are based on the price of a typical home in the market. The price appreciation depends on a home's condition, and expenditures for a home's upkeep are not factored into these calculations. Home prices have generally increased over time, but home prices can rise or fall dependng national or local economic conditions.</p></div>
+    <div class="disclaimer m-1 mh-2"><p>Note: These calculations are based on the price of a typical home in the market. The price appreciation depends on a home's condition, and expenditures for a home's upkeep are not factored into these calculations. Home prices have generally increased over time, but home prices can rise or fall depending national or local economic conditions. The estimates provided in this experience are based on historical data.</p></div>
   </div>
 </template>
 
@@ -100,7 +100,7 @@ export default {
     goToLocation() {
       this.introLoad = false
       this.location = true
-      // when this is called, prep states
+      this.smoothScrollTo('#app')
     },
     getData() {
       var _this = this
@@ -160,17 +160,14 @@ export default {
     },
     smoothScrollTo(hash){
       var $ = jQuery
-      if (hash !== "") {
-       $('html, body').animate({
-         scrollTop: $(hash).offset().top - 40
-       }, 400);
+      if(document.documentElement.scrollTop > $(hash).offset().top){
+        if (hash !== "") {
+         $('html, body').animate({
+           scrollTop: $(hash).offset().top - 40
+         }, 400);
+        }
       }
     }
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss">
-
-</style>

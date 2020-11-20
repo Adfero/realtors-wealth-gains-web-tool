@@ -46,6 +46,8 @@ html, body {
     text-transform: uppercase;
   }
   a.btn {
+    padding: 10px 20px;
+    height: auto;
     cursor: pointer;
     color: white;
     font-weight: bold;
@@ -110,10 +112,10 @@ html, body {
     }
     a.btn {
       font-size: 2rem;
-      height: 84px;
+      // height: 84px;
       @media all and (min-width: $screen-lg) {
         font-size: 24px;
-        height: 90px;
+        // height: 90px;
       }
     }
   }

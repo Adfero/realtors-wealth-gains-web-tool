@@ -120,9 +120,13 @@ export default {
       height: 70px;
       font-size: 40px;
       text-align: center;
-      line-height: 1.6;
       flex: 0 0 70px;
       margin: 0 2px;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      padding: 0;
+      flex-direction: column;
       &[data-value="0"] {
         background: $color_gray !important;
         cursor: default;
@@ -145,7 +149,8 @@ export default {
     background-size: cover;
   }
   .start-over-btn {
-    height: 36px;
+    // height: 36px;
+    height: auto;
   }
 }
 </style>

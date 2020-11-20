@@ -61,7 +61,7 @@ export default {
     min-height: 500px;
   }
   .location-next {
-    height: 36px;
+    height: 50px !important;
   }
 }
 
